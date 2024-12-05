@@ -3,6 +3,8 @@ import { TVshowApi } from "./api/tv-show";
 import { useState, useEffect } from "react";
 import { BACKDROP_BASE_URL } from "./config";
 import { TVShowdetail } from "./components/TVShowdetail";
+import { Logo } from "./components/Logo/Logo";
+import LogoImg from "./assets/images/logo.png";
 
 //TVshowApi.fetchPopulars();
 export function App() {
@@ -32,8 +34,11 @@ export function App() {
       <div className={s.header}>
         <div className="row">
           <div className="col-4">
-            <div>Logo here</div>
-            <div>subtitle</div>
+            <Logo
+              image={LogoImg}
+              title={"Watowatch"}
+              subtitle={"Find a show you may like"}
+            />
           </div>
           <div className="col-md-12 col-lg-4">
             <input style={{ width: "100%" }} type="text" />
