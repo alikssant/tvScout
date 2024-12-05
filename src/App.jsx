@@ -5,11 +5,12 @@ import { BACKDROP_BASE_URL } from "./config";
 import { TVShowdetail } from "./components/TVShowdetail";
 import { Logo } from "./components/Logo/Logo";
 import LogoImg from "./assets/images/logo.png";
-import { TVShotListItem } from "./components/TVShowListItem/TVShowListItem";
+import { TVShowList } from "./components/TVShowList/TVShowList";
 
 //TVshowApi.fetchPopulars();
 export function App() {
   const [currentTVShow, setCurrentTVShow] = useState();
+  const [recommendationList, setRecommendationList] = useState([]);
 
   async function fetchPopulars() {
     const popularTVShowList = await TVshowApi.fetchPopulars();
@@ -17,11 +18,26 @@ export function App() {
       setCurrentTVShow(popularTVShowList[0]);
     }
   }
-  console.log(currentTVShow);
+
+  async function fetchRecommendations(tvShowId) {
+    const recommendationListResp = await TVshowApi.fetchRecommendations(
+      tvShowId
+    );
+    if (recommendationListResp.length > 0) {
+      setRecommendationList(recommendationListResp.slice(0, 10));
+    }
+  }
 
   useEffect(() => {
     fetchPopulars();
   }, []);
+
+  useEffect(() => {
+    if (currentTVShow) {
+      fetchRecommendations(currentTVShow.id);
+    }
+  }, [currentTVShow]);
+
   return (
     <div
       className={s.main_container}
@@ -50,28 +66,7 @@ export function App() {
         {currentTVShow && <TVShowdetail tvShow={currentTVShow} />}
       </div>
       <div className={s.recommended_shows}>
-        {currentTVShow && (
-          <>
-            <TVShotListItem
-              tvShow={currentTVShow}
-              onClick={(tvShow) => {
-                console.log("i have been clicked", tvShow);
-              }}
-            />
-            <TVShotListItem
-              tvShow={currentTVShow}
-              onClick={(tvShow) => {
-                console.log("i have been clicked", tvShow);
-              }}
-            />
-            <TVShotListItem
-              tvShow={currentTVShow}
-              onClick={(tvShow) => {
-                console.log("i have been clicked", tvShow);
-              }}
-            />
-          </>
-        )}
+        {currentTVShow && <TVShowList tvShowList={recommendationList} />}
       </div>
     </div>
   );
