@@ -1,9 +1,4 @@
-//import axios from "axios";
-import { FAKE_POPULARS, FAKE_RECOMMENDATIONS } from "./fake_data";
-//     const response = await axios.get(`${BASE_URL}tv/popular${API_KEY_PARAM}`);
-//     console.log("Today");
-//     console.log(response.data.results);
-//     return response.data.results;
+import axios from "axios";
 
 export class TVshowApi {
   static async fetchPopulars() {
@@ -17,15 +12,14 @@ export class TVshowApi {
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNmRiYjc1YjAzNzhjMzNmOWFkMmE3NTUxMTY4ODdhNSIsIm5iZiI6MTczMTI0MTg1Mi4xODcsInN1YiI6IjY3MzBhNzdjYWM5NzBhYWQyYThkOTUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l0-bFsXpuxKcs99ieOHVVcQSyT37lH5dJjlXFS4uS8I",
       },
     };
-    // try {
-    //   const response = await axios.request(options);
-    //   console.log(response.data.results);
-    //   return response.data.results;
-    // } catch (error) {
-    //   console.error("Error fetching popular TV shows:", error.message);
-    //   throw error;
-    // }
-    return FAKE_POPULARS;
+    try {
+      const response = await axios.request(options);
+      console.log(response.data.results);
+      return response.data.results;
+    } catch (error) {
+      console.error("Error fetching popular TV shows:", error.message);
+      throw error;
+    }
   }
 
   static async fetchRecommendations(tvShowId) {
@@ -39,14 +33,13 @@ export class TVshowApi {
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNmRiYjc1YjAzNzhjMzNmOWFkMmE3NTUxMTY4ODdhNSIsIm5iZiI6MTczMTI0MTg1Mi4xODcsInN1YiI6IjY3MzBhNzdjYWM5NzBhYWQyYThkOTUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l0-bFsXpuxKcs99ieOHVVcQSyT37lH5dJjlXFS4uS8I",
       },
     };
-    // try {
-    //   const response = await axios.request(options);
-    //   console.log(response.data.results);
-    //   return response.data.results;
-    // } catch (error) {
-    //   console.error("Error fetching popular TV shows:", error.message);
-    //   throw error;
-    // }
-    return FAKE_RECOMMENDATIONS;
+    try {
+      const response = await axios.request(options);
+      console.log(response.data.results);
+      return response.data.results;
+    } catch (error) {
+      console.error("Error fetching popular TV shows:", error.message);
+      throw error;
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { TVShowListItem } from "../TVShowListItem/TVShowListItem";
 import s from "./style.module.css";
 
-export function TVShowList({ tvShowList }) {
+export function TVShowList({ tvShowList, onClickItem }) {
   return (
     <div>
       <div className={s.title}>You might like :</div>
@@ -10,10 +10,7 @@ export function TVShowList({ tvShowList }) {
           console.log(tvShow);
           return (
             <span className={s.tv_show_item} key={tvShow.id}>
-              <TVShowListItem
-                tvShow={tvShow}
-                onClick={() => console.log("todo")}
-              />
+              <TVShowListItem onClick={onClickItem} tvShow={tvShow} />
             </span>
           );
         })}

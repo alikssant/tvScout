@@ -38,6 +38,10 @@ export function App() {
     }
   }, [currentTVShow]);
 
+  function updateCurrentTvShow(tvShow) {
+    setCurrentTVShow(tvShow);
+  }
+
   return (
     <div
       className={s.main_container}
@@ -66,7 +70,12 @@ export function App() {
         {currentTVShow && <TVShowdetail tvShow={currentTVShow} />}
       </div>
       <div className={s.recommended_shows}>
-        {currentTVShow && <TVShowList tvShowList={recommendationList} />}
+        {currentTVShow && (
+          <TVShowList
+            onClickItem={updateCurrentTvShow}
+            tvShowList={recommendationList}
+          />
+        )}
       </div>
     </div>
   );
