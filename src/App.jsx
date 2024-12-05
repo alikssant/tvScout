@@ -5,6 +5,7 @@ import { BACKDROP_BASE_URL } from "./config";
 import { TVShowdetail } from "./components/TVShowdetail";
 import { Logo } from "./components/Logo/Logo";
 import LogoImg from "./assets/images/logo.png";
+import { TVShotListItem } from "./components/TVShowListItem/TVShowListItem";
 
 //TVshowApi.fetchPopulars();
 export function App() {
@@ -48,7 +49,30 @@ export function App() {
       <div className={s.tv_show_details}>
         {currentTVShow && <TVShowdetail tvShow={currentTVShow} />}
       </div>
-      <div className={s.recommended_shows}>Recommended tv shows</div>
+      <div className={s.recommended_shows}>
+        {currentTVShow && (
+          <>
+            <TVShotListItem
+              tvShow={currentTVShow}
+              onClick={(tvShow) => {
+                console.log("i have been clicked", tvShow);
+              }}
+            />
+            <TVShotListItem
+              tvShow={currentTVShow}
+              onClick={(tvShow) => {
+                console.log("i have been clicked", tvShow);
+              }}
+            />
+            <TVShotListItem
+              tvShow={currentTVShow}
+              onClick={(tvShow) => {
+                console.log("i have been clicked", tvShow);
+              }}
+            />
+          </>
+        )}
+      </div>
     </div>
   );
 }
