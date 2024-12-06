@@ -14,9 +14,9 @@ export function TVShowListItem({ tvShow, onClick }) {
         className={s.img}
       />
       <div className={s.title}>
-        {tvShow.name.length > MAX_TITLE_CHAR
-          ? tvShow.name.slice(0, MAX_TITLE_CHAR) + "..."
-          : tvShow.name}
+        {tvShow.title.length > MAX_TITLE_CHAR
+          ? tvShow.title.slice(0, MAX_TITLE_CHAR) + "..."
+          : tvShow.title}
       </div>
     </div>
   );
