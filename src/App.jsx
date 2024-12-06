@@ -6,6 +6,7 @@ import { TVShowdetail } from "./components/TVShowdetail";
 import { Logo } from "./components/Logo/Logo";
 import LogoImg from "./assets/images/logo.png";
 import { TVShowList } from "./components/TVShowList/TVShowList";
+import { SearchBar } from "./components/SearchBar/SearcBar";
 
 //TVshowApi.fetchPopulars();
 export function App() {
@@ -13,18 +14,26 @@ export function App() {
   const [recommendationList, setRecommendationList] = useState([]);
 
   async function fetchPopulars() {
-    const popularTVShowList = await TVshowApi.fetchPopulars();
-    if (popularTVShowList.length > 0) {
-      setCurrentTVShow(popularTVShowList[0]);
+    try {
+      const popularTVShowList = await TVshowApi.fetchPopulars();
+      if (popularTVShowList.length > 0) {
+        setCurrentTVShow(popularTVShowList[0]);
+      }
+    } catch (error) {
+      alert("Something went wrong when fetching the data");
     }
   }
 
   async function fetchRecommendations(tvShowId) {
-    const recommendationListResp = await TVshowApi.fetchRecommendations(
-      tvShowId
-    );
-    if (recommendationListResp.length > 0) {
-      setRecommendationList(recommendationListResp.slice(0, 10));
+    try {
+      const recommendationListResp = await TVshowApi.fetchRecommendations(
+        tvShowId
+      );
+      if (recommendationListResp.length > 0) {
+        setRecommendationList(recommendationListResp.slice(0, 10));
+      }
+    } catch (error) {
+      alert("Something went wrong when fetching the data");
     }
   }
 
@@ -40,6 +49,17 @@ export function App() {
 
   function updateCurrentTvShow(tvShow) {
     setCurrentTVShow(tvShow);
+  }
+
+  async function fetchByTitle(title) {
+    try {
+      const searchResponse = await TVshowApi.fetchByTitle(title);
+      if (searchResponse.length > 0) {
+        setCurrentTVShow(searchResponse[0]);
+      }
+    } catch (error) {
+      alert("Something went wrong when fetching the data");
+    }
   }
 
   return (
@@ -62,7 +82,7 @@ export function App() {
             />
           </div>
           <div className="col-md-12 col-lg-4">
-            <input style={{ width: "100%" }} type="text" />
+            <SearchBar onSubmit={fetchByTitle} />
           </div>
         </div>
       </div>
