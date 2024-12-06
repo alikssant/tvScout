@@ -1,5 +1,5 @@
 import s from "./style.module.css";
-import { FiveStarRating } from "./FiveStarRating/FiveStarRating";
+import { FiveStarRating } from "../FiveStarRating/FiveStarRating";
 export function TVShowdetail({ tvShow }) {
   const rating = Math.ceil((tvShow.vote_average / 2) * 10) / 10;
   return (

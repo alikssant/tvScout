@@ -2,7 +2,7 @@ import s from "./style.module.css";
 import { TVshowApi } from "./api/tv-show";
 import { useState, useEffect } from "react";
 import { BACKDROP_BASE_URL } from "./config";
-import { TVShowdetail } from "./components/TVShowdetail";
+import { TVShowdetail } from "./components/TVShowdetail/TVShowdetail";
 import { Logo } from "./components/Logo/Logo";
 import LogoImg from "./assets/images/logo.png";
 import { TVShowList } from "./components/TVShowList/TVShowList";
