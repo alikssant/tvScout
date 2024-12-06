@@ -1,9 +1,9 @@
 import axios from "axios";
-import { BASE_URL, API_KEY_PARAM } from "../config";
+import { BASE_URL } from "../config";
 export class TVshowApi {
   static async fetchPopulars() {
     const response = await axios.get(
-      `${BASE_URL}movie/popular${API_KEY_PARAM}`
+      `${BASE_URL}movie/popular?api_key=${process.env.REACT_APP_API_KEY_PARAM}`
     );
 
     return response.data.results;
@@ -11,7 +11,7 @@ export class TVshowApi {
   static async fetchRecommendations(tvShowId) {
     try {
       const response = await axios.get(
-        `${BASE_URL}movie/${tvShowId}/recommendations${API_KEY_PARAM}`
+        `${BASE_URL}movie/${tvShowId}/recommendations?api_key=${process.env.REACT_APP_API_KEY_PARAM}`
       );
       console.log(response.data.results.length);
       return response.data.results;
@@ -23,7 +23,7 @@ export class TVshowApi {
   }
   static async fetchByTitle(title) {
     const response = await axios.get(
-      `${BASE_URL}search/tv${API_KEY_PARAM}&query=${title}`
+      `${BASE_URL}search/tv?api_key=${process.env.REACT_APP_API_KEY_PARAM}&query=${title}`
     );
     return response.data.results;
   }
