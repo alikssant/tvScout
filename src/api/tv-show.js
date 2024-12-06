@@ -13,7 +13,7 @@ export class TVshowApi {
       const response = await axios.get(
         `${BASE_URL}movie/${tvShowId}/recommendations?api_key=${process.env.REACT_APP_API_KEY_PARAM}`
       );
-      console.log(response.data.results.length);
+
       return response.data.results;
     } catch (error) {
       console.error("Error fetching  recommendations:", error.message);
