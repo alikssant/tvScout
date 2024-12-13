@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Overview
 
-Movie Explorer is a React.js web application that lets users browse popular movies, search for specific titles, and get personalized movie recommendations.The app fetches data dynamically from a movie API and presents it in a user-friendly interface.
+Movie Explorer is a React.js web application that lets users browse popular movies, search for specific titles, and get personalized movie recommendations.The app fetches data dynamically from a movie API.
 
 ## **Installation**
 
